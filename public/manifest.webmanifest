@@ -1,0 +1,11 @@
+{
+  "name": "Casa a Dois",
+  "short_name": "Casa a Dois",
+  "description": "As finanças da casa, a dois.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f6fb",
+  "theme_color": "#243e89",
+  "lang": "pt-PT",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}

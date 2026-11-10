@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Colours are RGB triplets so Tailwind can apply opacity (bg-brand/10). */
+:root {
+  --brand-light: 36 62 137;
+  --brand-dark: 120 141 196;
+  --brand-soft-light: 228 233 245;
+  --brand-soft-dark: 34 45 79;
+
+  --bg: 241 243 249;
+  --surface: 255 255 255;
+  --sunk: 244 246 251;
+  --line: 228 232 241;
+  --fg: 17 22 38;
+  --muted: 104 112 135;
+  --brand: var(--brand-light);
+  --brand-soft: var(--brand-soft-light);
+  --on-brand: 255 255 255;
+  --good: 22 150 82;
+  --warn: 196 120 10;
+  --bad: 220 53 69;
+  --p1: 47 107 255;
+  --p2: 240 72 110;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: 11 14 24;
+    --surface: 20 24 38;
+    --sunk: 27 32 49;
+    --line: 39 45 67;
+    --fg: 232 236 246;
+    --muted: 150 158 182;
+    --brand: var(--brand-dark);
+    --brand-soft: var(--brand-soft-dark);
+    --on-brand: 10 13 24;
+    --good: 74 210 135;
+    --warn: 240 182 80;
+    --bad: 255 107 120;
+    --p1: 102 148 255;
+    --p2: 255 117 148;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: 11 14 24;
+  --surface: 20 24 38;
+  --sunk: 27 32 49;
+  --line: 39 45 67;
+  --fg: 232 236 246;
+  --muted: 150 158 182;
+  --brand: var(--brand-dark);
+  --brand-soft: var(--brand-soft-dark);
+  --on-brand: 10 13 24;
+  --good: 74 210 135;
+  --warn: 240 182 80;
+  --bad: 255 107 120;
+  --p1: 102 148 255;
+  --p2: 255 117 148;
+  color-scheme: dark;
+}
+
+html, body, #root { min-height: 100%; }
+body {
+  @apply bg-bg text-fg font-sans antialiased;
+  font-size: 14px;
+  font-feature-settings: "cv11", "ss01";
+}
+.tnum { font-variant-numeric: tabular-nums; }
+
+@layer components {
+  .card { @apply min-w-0 bg-surface rounded-card border border-line/70 shadow-[0_1px_2px_rgb(16_24_40/0.04)]; }
+  .card-pad { @apply p-5 sm:p-6; }
+  .card-title { @apply text-[15px] font-semibold text-fg; }
+  .label { @apply text-[12.5px] text-muted; }
+  .btn { @apply inline-flex items-center justify-center gap-1.5 rounded-xl px-3.5 h-9 text-[13.5px] font-semibold transition-colors disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand; }
+  .btn-primary { @apply btn bg-brand text-on-brand hover:bg-brand/90; }
+  .btn-ghost { @apply btn border border-line bg-surface text-fg hover:bg-sunk; }
+  .btn-quiet { @apply btn text-muted hover:text-fg hover:bg-sunk; }
+  .btn-danger { @apply btn text-bad hover:bg-bad/10; }
+  .input { @apply w-full min-w-0 h-9 rounded-lg border border-line bg-surface px-3 text-[14px] text-fg placeholder:text-muted/70 focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand/60; }
+  textarea.input { @apply h-auto py-2; }
+  .chip { @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11.5px] font-semibold; }
+  .row-line { @apply border-b border-line/70 last:border-b-0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
